@@ -1,12 +1,11 @@
 import "./App.css";
+import AppHeader from "./components/AppHeader";
 import PdfViewer from "./components/PdfViewer";
 
 function App() {
   return (
     <>
-      <div className="app-header">
-        <h1>宅配業務専用地図表示システム</h1>
-      </div>
+      <AppHeader />
 
       <div className="content">
         <PdfViewer file="/test.pdf" />
