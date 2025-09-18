@@ -1,0 +1,83 @@
+.debug-display {
+  position: fixed;
+  top: 60px; /* AppHeaderの下に配置 */
+  right: 10px;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-family: "Courier New", monospace;
+  font-size: 12px;
+  cursor: pointer;
+  user-select: none;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease;
+}
+
+.debug-display:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.debug-display.collapsed {
+  padding: 6px 10px;
+  font-size: 11px;
+}
+
+.debug-display.expanded {
+  min-width: 200px;
+}
+
+.debug-title {
+  font-weight: bold;
+  margin-bottom: 4px;
+  font-size: 11px;
+  text-align: center;
+}
+
+.debug-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.debug-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 16px;
+}
+
+.debug-label {
+  color: #ccc;
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.debug-value {
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  margin-left: 8px;
+  text-align: right;
+  min-width: 60px;
+}
+
+/* モバイル表示での調整 */
+@media (max-width: 768px) {
+  .debug-display {
+    top: 50px;
+    right: 5px;
+    font-size: 10px;
+  }
+
+  .debug-display.expanded {
+    min-width: 160px;
+  }
+
+  .debug-label,
+  .debug-value {
+    font-size: 9px;
+  }
+}
