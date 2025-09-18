@@ -1,6 +1,6 @@
 import './Drawer.css'
-import type { Coordinate } from '../types'
 import { menuItems } from '../data/menuItems'
+import type { Coordinate } from '../types'
 
 interface DrawerProps {
   isOpen: boolean
@@ -48,7 +48,7 @@ function Drawer({ isOpen, onClose, onMenuItemClick }: DrawerProps) {
           <h3>配達員</h3>
           <ul>
             {menuItems.map((item, index) => (
-              <li 
+              <li
                 key={index}
                 onClick={() => handleMenuItemClick(item.coordinates)}
                 style={{ cursor: 'pointer' }}

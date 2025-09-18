@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import './App.css'
 import AppHeader from './components/AppHeader'
+import DebugDisplay from './components/DebugDisplay'
 import Drawer from './components/Drawer'
 import PdfViewer from './components/PdfViewer'
-import DebugDisplay from './components/DebugDisplay'
 import type { Coordinate } from './types'
 
 function App() {
@@ -49,8 +49,8 @@ function App() {
       <AppHeader onDrawerToggle={handleDrawerToggle} isDrawerOpen={isDrawerOpen} />
 
       <div className="content">
-        <PdfViewer 
-          file="/test.pdf" 
+        <PdfViewer
+          file="/test.pdf"
           onPdfLoad={handlePdfLoad}
           onPdfClick={handlePdfClick}
           scrollToCoordinates={scrollToCoordinates}
@@ -58,12 +58,12 @@ function App() {
         />
       </div>
 
-      <Drawer 
-        isOpen={isDrawerOpen} 
-        onClose={handleDrawerClose} 
+      <Drawer
+        isOpen={isDrawerOpen}
+        onClose={handleDrawerClose}
         onMenuItemClick={handleMenuItemClick}
       />
-      
+
       <DebugDisplay
         pdfWidth={pdfWidth}
         pdfHeight={pdfHeight}

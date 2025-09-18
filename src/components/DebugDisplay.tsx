@@ -31,7 +31,9 @@ function DebugDisplay({ pdfWidth, pdfHeight, scale, clickX, clickY }: DebugDispl
         <div className="debug-item">
           <span className="debug-label">PDFサイズ:</span>
           <span className="debug-value">
-            {pdfWidth && pdfHeight ? `w:${Math.round(pdfWidth)} × h:${Math.round(pdfHeight)}` : '読み込み中...'}
+            {pdfWidth && pdfHeight
+              ? `w:${Math.round(pdfWidth)} × h:${Math.round(pdfHeight)}`
+              : '読み込み中...'}
           </span>
         </div>
         <div className="debug-item">
@@ -41,7 +43,9 @@ function DebugDisplay({ pdfWidth, pdfHeight, scale, clickX, clickY }: DebugDispl
         <div className="debug-item">
           <span className="debug-label">クリック座標:</span>
           <span className="debug-value">
-            {clickX !== null && clickY !== null ? `x:${Math.round(clickX)}, y:${Math.round(clickY)}` : '-'}
+            {clickX !== null && clickY !== null
+              ? `x:${Math.round(clickX)}, y:${Math.round(clickY)}`
+              : '-'}
           </span>
         </div>
       </div>
