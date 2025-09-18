@@ -170,7 +170,6 @@ react-pdf-sample/
 ### 推奨ライブラリ
 
 - **react-pdf**: PDF 表示のメインライブラリ
-- **react-zoom-pan-pinch**: ズーム・パン機能の実装
 - **react-hotkeys-hook**: キーボードショートカット
 
 ## 開発方針
