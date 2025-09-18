@@ -1,0 +1,75 @@
+.drawer-toggle-btn {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+  z-index: 10;
+}
+
+.drawer-toggle-btn:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.drawer-toggle-btn:focus {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+.hamburger-icon {
+  display: flex;
+  flex-direction: column;
+  width: 24px;
+  height: 18px;
+  justify-content: space-between;
+}
+
+.hamburger-icon span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: #333;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* 開いている状態のアニメーション */
+.drawer-toggle-btn.open .hamburger-icon span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.drawer-toggle-btn.open .hamburger-icon span:nth-child(2) {
+  opacity: 0;
+}
+
+.drawer-toggle-btn.open .hamburger-icon span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* モバイル表示での調整 */
+@media (max-width: 768px) {
+  .drawer-toggle-btn {
+    left: 0.5rem;
+    padding: 0.25rem;
+  }
+
+  .hamburger-icon {
+    width: 20px;
+    height: 15px;
+  }
+
+  .hamburger-icon span {
+    height: 2px;
+  }
+}
+
+@media (max-width: 480px) {
+  .drawer-toggle-btn {
+    left: 0.25rem;
+  }
+}
