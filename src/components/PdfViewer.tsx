@@ -1,8 +1,10 @@
-import { useCallback, useEffect, useRef } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { Document, Page, pdfjs } from 'react-pdf'
 import 'react-pdf/dist/Page/AnnotationLayer.css'
 import 'react-pdf/dist/Page/TextLayer.css'
 import type { Coordinate } from '../types'
+import ErrorDisplay from './ErrorDisplay'
+import LoadingDisplay from './LoadingDisplay'
 
 // PDF.js worker の設定
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
@@ -28,9 +30,28 @@ function PdfViewer({
   const containerRef = useRef<HTMLDivElement>(null)
   const pageRef = useRef<HTMLDivElement>(null)
 
+  // PDF読み込み状態の管理
+  const [loadingProgress, setLoadingProgress] = useState(0)
+  const [loadError, setLoadError] = useState<string | null>(null)
+
   const handleDocumentLoadSuccess = useCallback(() => {
-    // ドキュメントの読み込み完了時の処理
+    console.log('✅ PDFドキュメント読み込み完了')
+    setLoadError(null)
   }, [])
+
+  const handleDocumentLoadError = useCallback((error: Error) => {
+    console.error('❌ PDFドキュメント読み込みエラー:', error)
+    setLoadError(`PDFの読み込みに失敗しました: ${error.message}`)
+  }, [])
+
+  const handleDocumentLoadProgress = useCallback(
+    ({ loaded, total }: { loaded: number; total: number }) => {
+      const progress = Math.round((loaded / total) * 100)
+      console.log(`📊 PDF読み込み進捗: ${progress}% (${loaded}/${total})`)
+      setLoadingProgress(progress)
+    },
+    []
+  )
 
   const handlePageLoadSuccess = useCallback(
     (page: { width: number; height: number }) => {
@@ -141,11 +162,27 @@ function PdfViewer({
 
   return (
     <div className="pdf-viewer" ref={containerRef}>
-      <Document file={file} onLoadSuccess={handleDocumentLoadSuccess}>
-        <div ref={pageRef} onClick={handlePageClick} style={{ cursor: 'crosshair' }}>
-          <Page pageNumber={1} onLoadSuccess={handlePageLoadSuccess} />
-        </div>
-      </Document>
+      {loadError ? (
+        <ErrorDisplay
+          error={loadError}
+          onRetry={() => {
+            setLoadError(null)
+            setLoadingProgress(0)
+          }}
+        />
+      ) : (
+        <Document
+          file={file}
+          onLoadSuccess={handleDocumentLoadSuccess}
+          onLoadError={handleDocumentLoadError}
+          onLoadProgress={handleDocumentLoadProgress}
+          loading={<LoadingDisplay progress={loadingProgress} />}
+        >
+          <div ref={pageRef} onClick={handlePageClick} style={{ cursor: 'crosshair' }}>
+            <Page pageNumber={1} onLoadSuccess={handlePageLoadSuccess} />
+          </div>
+        </Document>
+      )}
     </div>
   )
 }
