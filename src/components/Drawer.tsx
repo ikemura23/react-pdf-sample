@@ -36,7 +36,14 @@ function Drawer({ isOpen, onClose }: DrawerProps) {
         tabIndex={-1}
       >
         <h2>メニュー</h2>
-        <p>ドロワーの内容は今後実装予定です</p>
+        <div className="menu-items">
+          <h3>配達員</h3>
+          <ul>
+            <li>はこすけ 矢野 智大</li>
+            <li>河野 裕美</li>
+            <li>WBC.Plus B-1 水上 伊織</li>
+          </ul>
+        </div>
         <button type="button" onClick={onClose}>
           閉じる
         </button>

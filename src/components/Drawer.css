@@ -40,6 +40,45 @@
   line-height: 1.5;
 }
 
+/* メニュー項目のスタイリング */
+.menu-items {
+  margin: 1.5rem 0;
+}
+
+.menu-items h3 {
+  margin: 0 0 1rem 0;
+  color: #333;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-bottom: 2px solid #efc91e;
+  padding-bottom: 0.5rem;
+  text-align: left;
+}
+
+.menu-items ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-items li {
+  padding: 0.75rem 1rem;
+  background-color: #fff;
+  border: 1px solid #e9ecef;
+  border-radius: 4px;
+  color: #333;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.menu-items li:hover {
+  background-color: #f8f9fa;
+  border-color: #efc91e;
+  transform: translateX(4px);
+}
+
 .drawer button {
   background-color: #efc91e;
   color: #333;
