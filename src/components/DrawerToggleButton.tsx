@@ -8,6 +8,7 @@ interface DrawerToggleButtonProps {
 function DrawerToggleButton({ onClick, isOpen = false }: DrawerToggleButtonProps) {
   return (
     <button
+      type="button"
       className={`drawer-toggle-btn ${isOpen ? 'open' : ''}`}
       onClick={onClick}
       aria-label={isOpen ? 'メニューを閉じる' : 'メニューを開く'}
