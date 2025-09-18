@@ -4,6 +4,7 @@ import AppHeader from './components/AppHeader'
 import Drawer from './components/Drawer'
 import PdfViewer from './components/PdfViewer'
 import DebugDisplay from './components/DebugDisplay'
+import type { Coordinate } from './types'
 
 function App() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
@@ -12,6 +13,7 @@ function App() {
   const [scale, setScale] = useState(1)
   const [clickX, setClickX] = useState<number | null>(null)
   const [clickY, setClickY] = useState<number | null>(null)
+  const [scrollToCoordinates, setScrollToCoordinates] = useState<Coordinate | null>(null)
 
   const handleDrawerToggle = () => {
     setIsDrawerOpen(!isDrawerOpen)
@@ -32,6 +34,16 @@ function App() {
     setClickY(y)
   }
 
+  const handleMenuItemClick = (coordinates: Coordinate) => {
+    console.log('メニューアイテムクリック:', coordinates)
+    setScrollToCoordinates(coordinates)
+  }
+
+  const handleScrollComplete = () => {
+    console.log('スクロール完了')
+    setScrollToCoordinates(null) // 座標状態をリセット
+  }
+
   return (
     <>
       <AppHeader onDrawerToggle={handleDrawerToggle} isDrawerOpen={isDrawerOpen} />
@@ -41,10 +53,16 @@ function App() {
           file="/test.pdf" 
           onPdfLoad={handlePdfLoad}
           onPdfClick={handlePdfClick}
+          scrollToCoordinates={scrollToCoordinates}
+          onScrollComplete={handleScrollComplete}
         />
       </div>
 
-      <Drawer isOpen={isDrawerOpen} onClose={handleDrawerClose} />
+      <Drawer 
+        isOpen={isDrawerOpen} 
+        onClose={handleDrawerClose} 
+        onMenuItemClick={handleMenuItemClick}
+      />
       
       <DebugDisplay
         pdfWidth={pdfWidth}

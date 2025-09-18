@@ -1,11 +1,19 @@
 import './Drawer.css'
+import type { Coordinate, MenuItem } from '../types'
 
 interface DrawerProps {
   isOpen: boolean
   onClose: () => void
+  onMenuItemClick?: (coordinates: Coordinate) => void
 }
 
-function Drawer({ isOpen, onClose }: DrawerProps) {
+const menuItems: MenuItem[] = [
+  { name: 'はこすけ 矢野 智大', coordinates: { x: 1056, y: 693 } },
+  { name: '河野 裕美', coordinates: { x: 1001, y: 1701 } },
+  { name: 'WBC.Plus B-1 水上 伊織', coordinates: { x: 268, y: 6664 } }
+]
+
+function Drawer({ isOpen, onClose, onMenuItemClick }: DrawerProps) {
   if (!isOpen) return null
 
   // キーボードイベントハンドラーを追加
@@ -18,6 +26,11 @@ function Drawer({ isOpen, onClose }: DrawerProps) {
   const handleDrawerKeyDown = (e: React.KeyboardEvent) => {
     // ドロワー内のキーボードイベントは伝播を停止
     e.stopPropagation()
+  }
+
+  const handleMenuItemClick = (coordinates: Coordinate) => {
+    onMenuItemClick?.(coordinates)
+    onClose() // メニューを閉じる
   }
 
   return (
@@ -39,9 +52,15 @@ function Drawer({ isOpen, onClose }: DrawerProps) {
         <div className="menu-items">
           <h3>配達員</h3>
           <ul>
-            <li>はこすけ 矢野 智大</li>
-            <li>河野 裕美</li>
-            <li>WBC.Plus B-1 水上 伊織</li>
+            {menuItems.map((item, index) => (
+              <li 
+                key={index}
+                onClick={() => handleMenuItemClick(item.coordinates)}
+                style={{ cursor: 'pointer' }}
+              >
+                {item.name}
+              </li>
+            ))}
           </ul>
         </div>
         <button type="button" onClick={onClose}>
