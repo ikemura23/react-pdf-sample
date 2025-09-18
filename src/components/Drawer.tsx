@@ -45,7 +45,7 @@ function Drawer({ isOpen, onClose, onMenuItemClick }: DrawerProps) {
       >
         <h2>メニュー</h2>
         <div className="menu-items">
-          <h3>配達員</h3>
+          <h3>配達先</h3>
           <ul>
             {menuItems.map((item) => (
               <li
