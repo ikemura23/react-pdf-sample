@@ -1,17 +1,12 @@
 import './Drawer.css'
-import type { Coordinate, MenuItem } from '../types'
+import type { Coordinate } from '../types'
+import { menuItems } from '../data/menuItems'
 
 interface DrawerProps {
   isOpen: boolean
   onClose: () => void
   onMenuItemClick?: (coordinates: Coordinate) => void
 }
-
-const menuItems: MenuItem[] = [
-  { name: 'はこすけ 矢野 智大', coordinates: { x: 1056, y: 693 } },
-  { name: '河野 裕美', coordinates: { x: 1001, y: 1701 } },
-  { name: 'WBC.Plus B-1 水上 伊織', coordinates: { x: 268, y: 6664 } }
-]
 
 function Drawer({ isOpen, onClose, onMenuItemClick }: DrawerProps) {
   if (!isOpen) return null
