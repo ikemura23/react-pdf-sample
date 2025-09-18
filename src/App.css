@@ -23,92 +23,10 @@
   box-sizing: border-box;
 }
 
-/* ドロワーのスタイリング */
-.drawer-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1000;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-}
-
-.drawer {
-  background-color: #f8f9fa;
-  width: 300px;
-  height: 100vh;
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-  padding: 2rem 1rem;
-  overflow-y: auto;
-  animation: slideIn 0.3s ease-out;
-  border-right: 1px solid #e9ecef;
-}
-
-.drawer h2 {
-  margin: 0 0 1rem 0;
-  color: #333;
-  font-size: 1.5rem;
-  background-color: #efc91e;
-  padding: 1rem;
-  border-radius: 4px;
-  text-align: center;
-  font-weight: 600;
-}
-
-.drawer p {
-  margin: 1rem 0;
-  color: #666;
-  line-height: 1.5;
-}
-
-.drawer button {
-  background-color: #efc91e;
-  color: #333;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background-color 0.2s ease;
-}
-
-.drawer button:hover {
-  background-color: #d4b01a;
-}
-
-@keyframes slideIn {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
-
 /* モバイル表示での調整 */
 @media (max-width: 768px) {
   #root {
     width: 100vw;
     min-width: 320px;
-  }
-
-  .drawer {
-    width: 280px;
-    padding: 1.5rem 1rem;
-  }
-
-  .drawer h2 {
-    font-size: 1.3rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .drawer {
-    width: 100vw;
-    max-width: 300px;
   }
 }

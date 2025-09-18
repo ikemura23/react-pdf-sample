@@ -2,12 +2,17 @@ import { useState } from 'react'
 import './App.css'
 import AppHeader from './components/AppHeader'
 import PdfViewer from './components/PdfViewer'
+import Drawer from './components/Drawer'
 
 function App() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
 
   const handleDrawerToggle = () => {
     setIsDrawerOpen(!isDrawerOpen)
+  }
+
+  const handleDrawerClose = () => {
+    setIsDrawerOpen(false)
   }
 
   return (
@@ -18,16 +23,7 @@ function App() {
         <PdfViewer file="/test.pdf" />
       </div>
 
-      {/* ドロワーの実装は今後追加予定 */}
-      {isDrawerOpen && (
-        <div className="drawer-overlay">
-          <div className="drawer">
-            <h2>メニュー</h2>
-            <p>ドロワーの内容は今後実装予定です</p>
-            <button onClick={handleDrawerToggle}>閉じる</button>
-          </div>
-        </div>
-      )}
+      <Drawer isOpen={isDrawerOpen} onClose={handleDrawerClose} />
     </>
   )
 }
