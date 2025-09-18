@@ -47,9 +47,9 @@ function Drawer({ isOpen, onClose, onMenuItemClick }: DrawerProps) {
         <div className="menu-items">
           <h3>配達員</h3>
           <ul>
-            {menuItems.map((item, index) => (
+            {menuItems.map((item) => (
               <li
-                key={index}
+                key={item.name}
                 onClick={() => handleMenuItemClick(item.coordinates)}
                 style={{ cursor: 'pointer' }}
               >

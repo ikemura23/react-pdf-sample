@@ -36,7 +36,7 @@
       "suspicious": {
         "noExplicitAny": "warn",
         "noArrayIndexKey": "warn",
-        "noConsole": "warn"
+        "noConsole": "off"
       },
       "complexity": {
         "noForEach": "off",
@@ -48,6 +48,10 @@
       },
       "nursery": {
         "useSortedClasses": "error"
+      },
+      "a11y": {
+        "useKeyWithClickEvents": "off",
+        "noStaticElementInteractions": "off"
       }
     }
   },

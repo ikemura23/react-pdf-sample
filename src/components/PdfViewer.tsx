@@ -33,7 +33,7 @@ function PdfViewer({
   }, [])
 
   const handlePageLoadSuccess = useCallback(
-    (page: any) => {
+    (page: { width: number; height: number }) => {
       const { width, height } = page
       console.log('📄 PDFページ読み込み完了:', { width, height, scale: 1 })
       onPdfLoad?.(width, height, 1)
