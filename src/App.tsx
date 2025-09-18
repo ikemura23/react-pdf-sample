@@ -1,6 +1,6 @@
-import "./App.css";
-import AppHeader from "./components/AppHeader";
-import PdfViewer from "./components/PdfViewer";
+import './App.css'
+import AppHeader from './components/AppHeader'
+import PdfViewer from './components/PdfViewer'
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
         <PdfViewer file="/test.pdf" />
       </div>
     </>
-  );
+  )
 }
 
-export default App;
+export default App
